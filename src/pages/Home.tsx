@@ -1,8 +1,15 @@
-import React from 'react'
+
+import Navbar from '../components/Navbar'
+import UploadForm from '../components/UploadForm'
+import ImageGallery from '../components/ImageGallery'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div className='max-q-4xl mx-auto'>
+      <Navbar />
+      <UploadForm />
+      <ImageGallery />
+    </div>
   )
 }
 
