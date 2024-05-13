@@ -3,7 +3,7 @@ import useStorage from "../hooks/useStorage"
 
 const UploadForm = () => {
   const [selectedFile, setSelectedFile] = useState<File  |  null>(null)
-  const { startUpload } = useStorage()
+  const { startUpload, progress } = useStorage()
 
   // ************* Upload photo functionality *****************************
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +32,10 @@ const UploadForm = () => {
           onChange={handleFileChange}
           className='file-input file-input-bordered w-full max-w-xs'
         />
-        <button type='submit' className="btn gap-3"> Upload </button>
+        <button type='submit' className={`btn gap-3 ${Boolean(progress) && 'loading'}`}
+        disabled={!selectedFile}>
+        Upload
+        </button>
       </form>
     </div>
   )

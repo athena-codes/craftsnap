@@ -1,13 +1,16 @@
 import { useState } from "react"
-import { storage } from "../firebase/config"
+import { db, storage } from "../firebase/config"
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage"
 // random name generator
 import { v4 as uuidv4 } from 'uuid';
+import { addDoc, collection } from "firebase/firestore";
+import { useAuth } from "./useAuth";
 
 const useStorage = () => {
     const [progress, setProgress] = useState<number>(0)
     const [error, setError] = useState<Error | null>(null)
-    const [url, setUrl] = useState<string | null>(null)
+    const { user } = useAuth()
+    // console.log('USER --->', user)
 
     // Will be run when Upload handleSubmit is triggered
     const startUpload = (file: File) => {
@@ -40,10 +43,16 @@ const useStorage = () => {
             (error) => {
                 setError(error)
             },
-            () => {
+            async () => {
+                const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
                 // Handle successful uploads on complete
-                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                    console.log('File available at', downloadURL);
+                setProgress(progress)
+
+                // Store data in Firestore
+                await addDoc(collection(db, "images"), {
+                    imageUrl: downloadURL,
+                    createdAt: new Date(),
+                    userEmail: user?.email
                 });
             }
         );
@@ -52,7 +61,7 @@ const useStorage = () => {
     }
 
     return {
-        progress, error, url, startUpload
+        progress, error, startUpload
     }
 }
 
