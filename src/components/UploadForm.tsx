@@ -1,7 +1,9 @@
 import { useState } from "react"
+import useStorage from "../hooks/useStorage"
 
 const UploadForm = () => {
   const [selectedFile, setSelectedFile] = useState<File  |  null>(null)
+  const { startUpload } = useStorage()
 
   // ************* Upload photo functionality *****************************
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +17,8 @@ const UploadForm = () => {
 
     if(selectedFile) {
       // Start uploading image
-      console.log(selectedFile)
+      startUpload(selectedFile)
+      // console.log(selectedFile)
     }
     setSelectedFile(null)
   }
