@@ -1,26 +1,29 @@
-import useFirestore from "../hooks/useFirestore"
+import useFirestore from '../hooks/useFirestore'
 
 const ImageGallery = () => {
+  const { docs: images, isLoading } = useFirestore('images')
 
-  const { docs } = useFirestore('images')
-  console.log('DOCS --->', docs)
+  if (isLoading) {
+    return (
+      <div className='text-center mt-10'>
+        <progress className='progress w-56'></progress>
+      </div>
+    )
+  }
 
   return (
-    <div className="grid md:grid-cols-3 justify-center gap-4">
-      <div className='card card-compact w-96 bg-base-100 shadow-xl'>
-        <figure>
-          <img
-            src=''
-            alt=''
-          />
-        </figure>
-        <div className='card-body'>
-
-          <p>Upload by:</p>
-          <span>Created on:</span>
-
+    <div className='grid md:grid-cols-3 justify-center gap-4'>
+      {images.map(image => (
+        <div key={image.imageUrl} className='card card-compact w-96 bg-base-100 shadow-xl'>
+          <figure>
+            <img src={image.imageUrl} alt='' />
+          </figure>
+          <div className='card-body'>
+            <p>Upload by: {image.userEmail}</p>
+            <span>Created on: {image.createdAt.toLocaleDateString()}</span>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   )
 }
