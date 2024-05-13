@@ -24,7 +24,7 @@ interface AuthProviderProps {
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
     const [ user, setUser] = useState<User  | null>(null)
-    const [ isLoading, setIsLoading] = useState<boolean>(false)
+    const [ isLoading, setIsLoading] = useState<boolean>(true)
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -41,6 +41,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     }
 
 
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={value}>{!isLoading && children}</AuthContext.Provider>
 
 }
