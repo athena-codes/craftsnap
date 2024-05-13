@@ -1,6 +1,9 @@
+import { useState } from "react"
+
 const Signup = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  console.log('EMAIL & PASS --->', email, password)
 
 
   return (
