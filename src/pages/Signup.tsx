@@ -1,4 +1,8 @@
 const Signup = () => {
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+
+
   return (
     <form>
       <div className='hero min-h-screen bg-base-200'>
@@ -17,6 +21,8 @@ const Signup = () => {
                 </label>
                 <input
                   type='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder='email'
                   className='input input-bordered'
                   required
@@ -28,6 +34,8 @@ const Signup = () => {
                 </label>
                 <input
                   type='password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder='password'
                   className='input input-bordered'
                   required
