@@ -35,7 +35,7 @@ const Signup = () => {
 
               </div>
               <div className='form-control mt-6'>
-                <button className='btn btn-primary'>Singup</button>
+                <button className='btn btn-primary'>Sign Up</button>
               </div>
             </form>
           </div>
