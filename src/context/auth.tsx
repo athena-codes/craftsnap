@@ -1,10 +1,15 @@
 // conetxt API - user & isLoading
-
+import { User } from 'firebase/auth'
 import { FC, createContext, useState } from "react";
 
 // create context
-export const AuthContext = createContext({
-    user:null,
+interface AuthContextType {
+    user: User | null,
+    isLoading: boolean
+}
+
+export const AuthContext = createContext<AuthContextType>({
+    user: null,
     isLoading:false
 })
 
@@ -16,8 +21,8 @@ interface AuthProviderProps {
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
-    const [ user, setUser] = useState(null)
-    const [ isLoading, setIsLoading] = useState(null)
+    const [ user, setUser] = useState<User  | null>(null)
+    const [ isLoading, setIsLoading] = useState<boolean>(false)
 
     const value = {
         user,
@@ -25,6 +30,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     }
 
 
-    return <AuthContext.Provider value={}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 
 }
