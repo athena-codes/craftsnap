@@ -1,8 +1,8 @@
 // conetxt API - user & isLoading
-import { User, onAuthStateChanged, getAuth } from 'firebase/auth'
+import { User, onAuthStateChanged,  } from 'firebase/auth'
 import { FC, createContext, useEffect, useState } from "react";
+import { auth } from '../firebase/config';
 
-const auth = getAuth()
 
 // create context
 interface AuthContextType {
