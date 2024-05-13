@@ -2,12 +2,14 @@
 import Navbar from '../components/Navbar'
 import UploadForm from '../components/UploadForm'
 import ImageGallery from '../components/ImageGallery'
-import { useAuth } from '../hooks/useAuth'
+// import { useAuth } from '../hooks/useAuth'
 
 const Home = () => {
-  const { user } = useAuth()
-  console.log(user)
-  
+  // const { user } = useAuth()
+  // console.log(user)
+
+
+
   return (
     <div className='max-q-4xl mx-auto'>
       <Navbar />
