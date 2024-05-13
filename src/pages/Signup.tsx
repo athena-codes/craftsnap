@@ -3,11 +3,15 @@ import { useState } from "react"
 const Signup = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  console.log('EMAIL & PASS --->', email, password)
+  // console.log('EMAIL & PASS --->', email, password)
 
+  // Handle Submit for signup form
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+     e.preventDefault()
+  }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className='hero min-h-screen bg-base-200'>
         <div className='hero-content flex-col '>
           <div className='text-center '>
