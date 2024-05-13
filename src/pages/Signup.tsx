@@ -1,13 +1,27 @@
-import { useState } from "react"
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { useState } from 'react'
+import { auth } from '../firebase/config'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  // console.log('EMAIL & PASS --->', email, password)
+  const [error, setError] = useState<string>('')
+
+  console.log('EMAIL & PASS --->', email, password)
 
   // Handle Submit for signup form
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-     e.preventDefault()
+    e.preventDefault()
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, password)
+      navigate('/')
+
+    } catch (error: Error) {
+      setError(error.message)
+    }
   }
 
   return (
@@ -29,7 +43,7 @@ const Signup = () => {
                 <input
                   type='email'
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={e => setEmail(e.target.value)}
                   placeholder='email'
                   className='input input-bordered'
                   required
@@ -42,12 +56,11 @@ const Signup = () => {
                 <input
                   type='password'
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={e => setPassword(e.target.value)}
                   placeholder='password'
                   className='input input-bordered'
                   required
                 />
-
               </div>
               <div className='form-control mt-6'>
                 <button className='btn btn-primary'>Sign Up</button>
