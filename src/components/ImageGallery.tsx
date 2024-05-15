@@ -14,7 +14,10 @@ const ImageGallery = () => {
   return (
     <div className='grid md:grid-cols-3 justify-center gap-4'>
       {images.map(image => (
-        <div key={image.imageUrl} className='card card-compact w-96 bg-base-100 shadow-xl'>
+        <div
+          key={image.imageUrl}
+          className='card card-compact w-96 bg-base-100 shadow-xl'
+        >
           <figure>
             <img src={image.imageUrl} alt='' />
           </figure>
