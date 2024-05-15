@@ -1,4 +1,5 @@
 import useFirestore from '../hooks/useFirestore'
+import styles from './ImageGallery.module.css' // Import the CSS module
 
 const ImageGallery = () => {
   const { docs: images, isLoading } = useFirestore('images')
@@ -12,13 +13,15 @@ const ImageGallery = () => {
   }
 
   return (
-    <div className='grid md:grid-cols-3 justify-center gap-4'>
+    <div
+      className={`grid md:grid-cols-3 justify-center gap-4 ${styles.galleryContainer}`}
+    >
       {images.map(image => (
         <div
           key={image.imageUrl}
-          className='card card-compact w-96 bg-base-100 shadow-xl'
+          className={`card card-compact ${styles.imageCard} bg-base-100 shadow-xl`}
         >
-          <figure>
+          <figure className={styles.imageFigure}>
             <img src={image.imageUrl} alt='' />
           </figure>
           <div className='card-body'>

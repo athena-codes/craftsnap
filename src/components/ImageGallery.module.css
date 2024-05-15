@@ -1,0 +1,18 @@
+/* ImageGallery.module.css */
+.galleryContainer {
+    margin-top: 2rem;
+}
+
+.imageCard {
+    width: 20rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.imageFigure img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    border: 3px solid black;
+}
