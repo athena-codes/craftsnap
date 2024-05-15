@@ -9,7 +9,6 @@ const Signup = () => {
   const [password, setPassword] = useState<string>('')
   const [error, setError] = useState<string>('')
 
-  console.log('EMAIL & PASS --->', email, password)
 
   // Handle Submit for signup form
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
