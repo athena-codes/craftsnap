@@ -12,8 +12,8 @@ const Navbar = () => {
 
   return (
     <div className='navbar bg-base-100 justify-between'>
-      <a className='font-bold normal-case underline text-xl'>
-        Minecraft Captures<span>⛏️💎</span>
+      <a className='font-bold normal-case text-xl'>
+        Craft Snap<span>⛏️💎</span>
       </a>
       <button onClick={handleLogout}>Log Out</button>
     </div>

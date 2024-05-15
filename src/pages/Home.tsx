@@ -9,7 +9,6 @@ const Home = () => {
   // console.log(user)
 
 
-
   return (
     <div className='max-q-4xl mx-auto'>
       <Navbar />
