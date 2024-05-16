@@ -2,7 +2,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useState } from 'react'
 import { auth } from '../firebase/config'
 import { useNavigate } from 'react-router-dom'
-
+import minecraftIcon from '../assets/4737386_minecraft_squircle_icon.png'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -27,12 +27,17 @@ const Login = () => {
         {error && <p>{error}</p>}
         <div className='hero min-h-screen bg-base-200'>
           <div className='hero-content flex-col'>
-            <div className='text-center'>
-              <h1 className='text-5xl font-bold'>Login to Image Gallery Pro</h1>
-              <p className='py-6'>
-                Access your account to manage and share images!
-              </p>
+            <div className='text-center flex items-center justify-center'>
+              <img
+                src={minecraftIcon} // Use the imported icon
+                alt='CraftSnap Logo'
+                style={{ width: '60px', height: '60px', marginRight: '10px' }}
+              />
+              <h1 className='text-5xl font-bold'>CraftSnap Login</h1>
             </div>
+            <p className='py-6 text-center' style={{ maxWidth: '40rem' }}>
+              Log in to CraftSnap to continue crafting your story, sharing spectacular moments, and exploring the limitless creations of your community.
+            </p>
             <div className='card sm:w-[30rem] shadow-2xl bg-base-100'>
               <div className='card-body'>
                 <div className='form-control'>
@@ -83,5 +88,3 @@ const Login = () => {
 }
 
 export default Login
-
-
