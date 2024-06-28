@@ -12,6 +12,7 @@ const ImageGallery = () => {
     )
   }
 
+  // hi
   return (
     <div
       className={`grid md:grid-cols-3 justify-center gap-4 ${styles.galleryContainer}`}
