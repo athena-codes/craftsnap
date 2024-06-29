@@ -1,5 +1,5 @@
 import useFirestore from '../hooks/useFirestore'
-// import styles from './css/ImageGallery.module.css'
+import styles from './css/ImageGallery.module.css'
 
 const ImageGallery = () => {
   const { docs: images, isLoading } = useFirestore('images')
